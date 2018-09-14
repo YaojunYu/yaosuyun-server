@@ -5,7 +5,7 @@
 
 	<groupId>com.yao.express</groupId>
 	<artifactId>service-user</artifactId>
-	<version>1.0.0</version>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>service-user</name>
