@@ -5,7 +5,7 @@
 
 	<groupId>com.yao.express</groupId>
 	<artifactId>service-user</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>service-user</name>
@@ -328,148 +328,16 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.6</version>
-				<configuration>
-					<verbose>true</verbose>
-					<overwrite>true</overwrite>
-				</configuration>
-				<dependencies>
-					<!-- 配置这个依赖主要是为了等下在配置MG的时候可以不用配置classPathEntry这样的一个属性，避免代码的耦合度太高 -->
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>${jdbc.connector.version}</version>
-					</dependency>
-				</dependencies>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<skip>${deploy.skip}</skip>
-				</configuration>
-			</plugin>
-			<!--  要将源码放上去，需要加入这个插件  -->
-			<plugin>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.1</version>
-				<configuration>
-					<attach>true</attach>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
+				<version>2.8.2</version>
 			</plugin>
 		</plugins>
-
-		<!-- 打包插件管理 -->
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-					<dependencies>
-						<dependency>
-							<groupId>org.springframework.boot</groupId>
-							<artifactId>spring-boot-devtools</artifactId>
-							<version>1.4.5.RELEASE</version>
-							<optional>true</optional>
-						</dependency>
-					</dependencies>
-					<executions>
-						<execution>
-							<goals>
-								<goal>repackage</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<!-- docker镜像build工具 -->
-				<plugin>
-					<groupId>com.spotify</groupId>
-					<artifactId>docker-maven-plugin</artifactId>
-					<version>${docker.plugin.version}</version>
-					<!--<executions>-->
-					<!--<execution>-->
-					<!--<phase>package</phase>-->
-					<!--<goals>-->
-					<!--<goal>build</goal>-->
-					<!--</goals>-->
-					<!--</execution>-->
-					<!--</executions>-->
-					<configuration>
-						<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-						<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
-						<resources>
-							<resource>
-								<targetPath>/</targetPath>
-								<directory>${project.build.directory}</directory>
-								<include>${project.build.finalName}.jar</include>
-							</resource>
-						</resources>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
-
-	<!--<repositories>-->
-	<!--<repository>-->
-	<!--<id>maven-yaosuyun</id>-->
-	<!--<name>Maven yaosuyun</name>-->
-	<!--<url>http://repo.yaosuyun.com/repository/maven-public/</url>-->
-	<!--<releases>-->
-	<!--<enabled>true</enabled>-->
-	<!--</releases>-->
-	<!--<snapshots>-->
-	<!--<enabled>true</enabled>-->
-	<!--</snapshots>-->
-	<!--</repository>-->
-	<!--</repositories>-->
-	<!--<pluginRepositories>-->
-	<!--<pluginRepository>-->
-	<!--<id>maven-yaosuyun</id>-->
-	<!--<name>Maven yaosuyun</name>-->
-	<!--<url>http://repo.yaosuyun.com/repository/maven-public/</url>-->
-	<!--<releases>-->
-	<!--<enabled>true</enabled>-->
-	<!--</releases>-->
-	<!--<snapshots>-->
-	<!--<enabled>true</enabled>-->
-	<!--</snapshots>-->
-	<!--</pluginRepository>-->
-	<!--</pluginRepositories>-->
-
-	<!--打包发布到私库的配置-->
-	<!--<distributionManagement>-->
-	<!--<repository>-->
-	<!--<id>maven-releases</id>-->
-	<!--<name>Release Repository</name>-->
-	<!--<url>http://repo.yaosuyun.com/repository/maven-releases/</url>-->
-	<!--</repository>-->
-	<!--<snapshotRepository>-->
-	<!--<id>maven-snapshots</id>-->
-	<!--<name>Snapshot Repository</name>-->
-	<!--<url>http://repo.yaosuyun.com/repository/maven-snapshots/</url>-->
-	<!--</snapshotRepository>-->
-	<!--</distributionManagement>-->
-
-
 
 
 </project>
