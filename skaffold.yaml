@@ -1,0 +1,31 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  tagPolicy:
+    envTemplate:
+      template: "{{.DOCKER_REGISTRY}}/yaojunyu/yojun-yu:{{.VERSION}}"
+  artifacts:
+  - imageName: changeme
+    workspace: .
+    docker: {}
+  local: {}
+deploy:
+  kubectl:
+    manifests:
+profiles:
+- name: dev
+  build:
+    tagPolicy:
+      envTemplate:
+        template: "{{.DOCKER_REGISTRY}}/yaojunyu/yojun-yu:{{.DIGEST_HEX}}"
+    artifacts:
+    - docker: {}
+    local: {}
+  deploy:
+    helm:
+      releases:
+      - name: yojun-yu
+        chartPath: charts/yojun-yu
+        setValueTemplates:
+          image.repository: "{{.DOCKER_REGISTRY}}/yaojunyu/yojun-yu"
+          image.tag: "{{.DIGEST_HEX}}"
