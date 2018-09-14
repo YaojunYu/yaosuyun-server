@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="context1" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="javaFileEncoding" value="UTF-8"/>
+            <!-- 是否去除自动生成的日期注释 true：是 ： false:否 -->
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <!--mysql8连接不上，建议使用mysql5.6-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://114.55.84.67:53306/yao_express_db?useSSL=false"
+                        userId="root" password="pwd@express-db"/>
+        <javaModelGenerator targetPackage="com.yao.express.service.user.entity"
+                            targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="mappers"
+                         targetProject="src/main/resources/"/>
+
+        <javaClientGenerator targetPackage="com.yao.express.service.user.mapper"
+                             targetProject="src/main/java"
+                             type="ANNOTATEDMAPPER"/> <!--生成注解形式的mapper-->
+
+        <table tableName="orderr" schema="yao_express_db" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <!--<property name="useActualColumnNames" value="true"/>-->
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <!--<table tableName="usr_partner" schema="users" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            &lt;!&ndash;<property name="useActualColumnNames" value="true"/>&ndash;&gt;
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table tableName="usr_manager" schema="users" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            &lt;!&ndash;<property name="useActualColumnNames" value="true"/>&ndash;&gt;
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table tableName="usr_user_os" schema="users" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            &lt;!&ndash;<property name="useActualColumnNames" value="true"/>&ndash;&gt;
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--<table tableName="end_client_integral" schema="dphtest" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_student" domainObjectName="Student"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+    </context>
+</generatorConfiguration>

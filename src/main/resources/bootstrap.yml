@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: service-user
+  profiles:
+    active: prod
+#  cloud:
+#    config:
+#      profile: dev
+#      label: master
+##      uri: http://localhost:7000/    # 通过URI方式连接config-server
+#      discovery:
+#        enabled: true                 # 通过注册服务发现方式连接config-server
+#        serviceId: config-server
+#      username: admin                 # 连接config-server的用户名
+#      password: admin                 # 连接config-server的密码
+##      fail-fast: true                 # 快速返回失败信息
+
+## 注册eureka
+eureka:
+  instance:
+    hostname: serviceuser
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://discovery:8761/eureka/
+
+server:
+  port: 8443
+
+# /refresh端口刷新需要安全认证
+# management.security.enabled 设置是否需要安全认证
+# 设置认证用户名和密码，默认user，密码日志中生成
+#security:
+#  user:
+#    name: admin
+#    password: admin
