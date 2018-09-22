@@ -1,0 +1,6 @@
+pipeline:
+  backend:
+    image: maven:alpine
+    commands:
+    - mvn build
+    - mvn package
