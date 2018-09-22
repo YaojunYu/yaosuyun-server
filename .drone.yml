@@ -1,5 +1,5 @@
 pipeline:
-  backend:
+  build:
     image: maven:alpine
     commands:
-    - mvn package
+    - mvn package -Dmaven.test.skip=true
